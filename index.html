@@ -633,7 +633,7 @@
 
 <!-- ===== BỘ LỌC NHANH ===== -->
 <section class="filter-section">
-  <div class="filter-bar">
+  <!-- <div class="filter-bar">
     <div class="filter-field">
       <span class="field-label">Loại Căn Hộ</span>
       <select class="field-select">
@@ -665,7 +665,7 @@
       </select>
     </div>
     <button class="filter-btn">Tìm Căn Hộ</button>
-  </div>
+  </div> -->
 </section>
 
 <!-- ===== MẶT BẰNG ===== -->
@@ -768,16 +768,16 @@
 <!-- ===== TIỆN ÍCH ===== -->
 <section class="amenities" id="amenities">
   <div class="amenities-inner">
-    <div class="amenities-visual">
+    <!-- <div class="amenities-visual"> -->
       <!-- THAY THẾ: Ảnh tiện ích nổi bật (hồ bơi, phòng gym, sân...) -->
-      <img class="amenities-img-main" src="GALLERY_PHOTO_9.jpg" alt="Tiện Ích">
+      <!-- <img class="amenities-img-main" src="GALLERY_PHOTO_9.jpg" alt="Tiện Ích"> -->
       <!-- THAY THẾ: Ảnh nhỏ thứ hai -->
-      <img class="amenities-img-inset" src="GALLERY_PHOTO_10.jpg" alt="Chi Tiết Tiện Ích">
-      <div class="amenities-badge">
-        <div class="amenities-badge-num">15+</div>
-        <div class="amenities-badge-text">Tiện Ích</div>
-      </div>
-    </div>
+      <!-- <img class="amenities-img-inset" src="GALLERY_PHOTO_10.jpg" alt="Chi Tiết Tiện Ích"> -->
+      <!-- <div class="amenities-badge"> -->
+        <!-- <div class="amenities-badge-num">15+</div> -->
+        <!-- <div class="amenities-badge-text">Tiện Ích</div> -->
+      <!-- </div> -->
+    <!-- </div> -->
 
     <div class="amenities-content">
       <div class="section-eyebrow">Tạo Ra Cho Sự Thoải Mái</div>
@@ -976,9 +976,12 @@
           <div class="contact-item-icon">📍</div>
           <div>
             <div class="contact-item-label">Địa Chỉ</div>
-            <div class="contact-item-val">42 Hẻm 283 Cách Mạng Tháng Tám, Phường 12, Hòa Hưng, Hồ Chí Minh 72500, Vietnam</div>
+            <div class="contact-item-val">
+              42 Hẻm 283 Cách Mạng Tháng Tám, Phường 12, Hòa Hưng, Hồ Chí Minh 72500, Vietnam
+            </div>
           </div>
         </div>
+
         <div class="contact-item">
           <div class="contact-item-icon">📞</div>
           <div>
@@ -986,6 +989,7 @@
             <div class="contact-item-val">(555) 000-0000</div>
           </div>
         </div>
+
         <div class="contact-item">
           <div class="contact-item-icon">✉️</div>
           <div>
@@ -993,6 +997,7 @@
             <div class="contact-item-val">hello@alohahouseapts.com</div>
           </div>
         </div>
+
         <div class="contact-item">
           <div class="contact-item-icon">🕐</div>
           <div>
@@ -1003,46 +1008,71 @@
       </div>
     </div>
 
-    <div class="contact-form">
+    <!-- ===== FORMSPREE FORM ===== -->
+    <form
+      class="contact-form"
+      action="https://formspree.io/f/xpqkyeeb"
+      method="POST"
+    >
       <div class="form-title">Đặt Lịch Tham Quan 🌺</div>
+
+      <!-- FIX: prevents "null" email header -->
+      <input type="hidden" name="_subject" value="Aloha House - New Tour Request">
+
+      <!-- OPTIONAL: helps identify source properly -->
+      <input type="hidden" name="Gửi Thông Qua" value="Trang mạng Aloha House">
+
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Họ</label>
-          <input class="form-input" type="text" placeholder="Nguyễn">
-        </div>
-        <div class="form-group">
           <label class="form-label">Tên</label>
-          <input class="form-input" type="text" placeholder="An">
+          <input class="form-input" type="text" name="Tên" placeholder="Nguyễn" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Họ</label>
+          <input class="form-input" type="text" name="Họ" placeholder="An" required>
         </div>
       </div>
+
       <div class="form-group">
         <label class="form-label">Địa Chỉ Email</label>
-        <input class="form-input" type="email" placeholder="an@email.com">
+        <input class="form-input" type="email" name="Địa Chỉ Email" placeholder="an@email.com" required>
       </div>
+
       <div class="form-group">
         <label class="form-label">Số Điện Thoại</label>
-        <input class="form-input" type="tel" placeholder="0909 000 000">
+        <input class="form-input" type="tel" name="Số Điện Thoại" placeholder="0909 000 000" required>
       </div>
+
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Loại Căn Hộ</label>
-          <select class="form-select">
+          <select class="form-select" name="Loại Căn Hộ">
             <option>Studio</option>
             <option>1 Phòng Ngủ</option>
             <option>2 Phòng Ngủ</option>
           </select>
         </div>
+
         <div class="form-group">
           <label class="form-label">Ngày Dọn Vào</label>
-          <input class="form-input" type="date">
+          <input class="form-input" type="date" name="Ngày Dọn Vào">
         </div>
       </div>
+
       <div class="form-group">
         <label class="form-label">Tin Nhắn (Tùy Chọn)</label>
-        <textarea class="form-textarea" placeholder="Câu hỏi hoặc yêu cầu đặc biệt của bạn..."></textarea>
+        <textarea
+          class="form-textarea"
+          name="Tin Nhắn"
+          placeholder="Câu hỏi hoặc yêu cầu đặc biệt của bạn..."
+        ></textarea>
       </div>
-      <button class="form-submit">Gửi Yêu Cầu Tham Quan 🌺</button>
-    </div>
+
+      <button type="submit" class="form-submit">
+        Gửi Yêu Cầu Tham Quan 🌺
+      </button>
+    </form>
   </div>
 </section>
 
