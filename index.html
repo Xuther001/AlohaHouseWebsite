@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aloha House — Cảm Giác Như Ở Nhà</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sand:    #faf6f0;
+    --linen:   #f2ebe0;
+    --warm:    #e8ddd0;
+    --clay:    #c4956a;
+    --clay-light: #d9ae8a;
+    --leaf:    #6b8f71;
+    --leaf-light: #89ac8f;
+    --bark:    #3d2e1e;
+    --bark-soft: #5a4535;
+    --muted:   #8a7a6a;
+    --border:  rgba(196,149,106,0.22);
+    --shadow:  rgba(61,46,30,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--sand);
+    color: var(--bark);
+    overflow-x: hidden;
+  }
+
+  /* ========= NAV ========= */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(250,246,240,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--bark); text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .nav-logo .logo-leaf { color: var(--leaf); }
+  .nav-logo .logo-accent { color: var(--clay); }
+
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--clay); }
+
+  .nav-cta {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.65rem 1.5rem;
+    background: var(--clay); color: #fff;
+    border: none; cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(196,149,106,0.35);
+  }
+  .nav-cta:hover { background: var(--bark); box-shadow: 0 4px 20px rgba(61,46,30,0.25); }
+
+  /* ========= HERO ========= */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 76px;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    animation: fadeUp 1s 0.3s ease both;
+    background: var(--sand);
+    position: relative;
+  }
+
+  .hero-left::before {
+    content: '🌿';
+    position: absolute; bottom: 3rem; right: 2rem;
+    font-size: 12rem; opacity: 0.04; pointer-events: none;
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--leaf); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.9rem; font-weight: 600;
+  }
+  .hero-eyebrow::before { content: ''; width: 36px; height: 2px; background: var(--leaf); border-radius: 2px; }
+
+  .hero-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(3rem, 4.5vw, 5rem);
+    font-weight: 500; line-height: 1.12;
+    color: var(--bark); margin-bottom: 1.8rem;
+  }
+  .hero-title em { font-style: italic; color: var(--clay); }
+
+  .hero-desc {
+    font-size: 1rem; line-height: 1.85; color: var(--muted);
+    max-width: 400px; margin-bottom: 2.5rem; font-weight: 400;
+  }
+
+  .hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    padding: 1rem 2.2rem; background: var(--clay); color: #fff;
+    font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+    border: none; cursor: pointer; transition: all 0.3s; text-decoration: none;
+    display: inline-block; border-radius: 50px; font-family: 'Nunito', sans-serif;
+    font-weight: 600; box-shadow: 0 6px 20px rgba(196,149,106,0.4);
+  }
+  .btn-primary:hover { background: var(--bark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(61,46,30,0.3); }
+
+  .btn-ghost {
+    font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; font-weight: 600;
+    display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s;
+    padding: 1rem 0;
+  }
+  .btn-ghost:hover { color: var(--clay); }
+  .btn-ghost::after { content: '→'; transition: transform 0.3s; }
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Lora', serif;
+    font-size: 2rem; font-weight: 500; color: var(--clay);
+  }
+  .stat-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.15rem; font-weight: 600; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    animation: fadeIn 1.2s 0.5s ease both;
+  }
+
+  .hero-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.04);
+    transition: transform 9s ease;
+  }
+  .hero-right:hover .hero-img { transform: scale(1); }
+
+  .hero-right::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(250,246,240,0.18), transparent);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    position: absolute; bottom: 2.5rem; left: 0;
+    background: var(--sand); padding: 1.2rem 1.8rem;
+    border-left: 4px solid var(--clay);
+    box-shadow: 4px 4px 24px var(--shadow);
+    z-index: 2;
+  }
+  .hero-badge-tag { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); font-weight: 700; }
+  .hero-badge-name { font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 500; margin-top: 0.2rem; color: var(--bark); }
+  .hero-badge-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+
+  /* ========= QUICK FILTER ========= */
+  .filter-section { background: var(--bark); padding: 2.5rem 6rem; }
+
+  .filter-bar {
+    display: grid; grid-template-columns: 1fr 1fr 1fr auto;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; overflow: hidden;
+  }
+
+  .filter-field {
+    padding: 1.1rem 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column; gap: 0.3rem;
+  }
+  .filter-field:last-of-type { border-right: none; }
+
+  .field-label { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clay); font-weight: 700; }
+
+  .field-select {
+    background: transparent; border: none; outline: none;
+    color: #fff; font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem; cursor: pointer; appearance: none;
+  }
+  .field-select option { background: var(--bark); }
+
+  .filter-btn {
+    padding: 0 2.2rem; background: var(--clay); border: none;
+    color: #fff; font-size: 0.78rem; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 700; cursor: pointer;
+    transition: background 0.3s; font-family: 'Nunito', sans-serif;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { background: var(--clay-light); }
+
+  /* ========= FLOOR PLANS ========= */
+  .floorplans { padding: 7rem 6rem; }
+
+  .section-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3.5rem;
+  }
+  .section-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--leaf); margin-bottom: 0.7rem; font-weight: 700;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.9rem, 2.8vw, 2.8rem); font-weight: 500; line-height: 1.2;
+  }
+  .section-link {
+    font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+    transition: color 0.3s; font-weight: 600;
+  }
+  .section-link:hover { color: var(--clay); }
+  .section-link::after { content: '→'; transition: transform 0.3s; }
+  .section-link:hover::after { transform: translateX(4px); }
+
+  .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .plan-card {
+    background: #fff; border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden; cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    animation: fadeUp 0.6s ease both;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .plan-card:nth-child(1) { animation-delay: 0.1s; }
+  .plan-card:nth-child(2) { animation-delay: 0.2s; }
+  .plan-card:nth-child(3) { animation-delay: 0.3s; }
+  .plan-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(61,46,30,0.13); }
+
+  .plan-img-wrap { overflow: hidden; height: 220px; position: relative; }
+  .plan-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .plan-card:hover .plan-img { transform: scale(1.05); }
+
+  .plan-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    background: var(--leaf); color: #fff;
+    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.3rem 0.85rem; border-radius: 50px; font-weight: 700;
+  }
+  .plan-tag.limited { background: var(--clay); }
+  .plan-tag.waitlist { background: var(--bark); }
+
+  .plan-body { padding: 1.5rem; }
+  .plan-type {
+    font-family: 'Lora', serif;
+    font-size: 1.35rem; font-weight: 500; color: var(--bark); margin-bottom: 0.3rem;
+  }
+  .plan-price { font-size: 1rem; color: var(--clay); font-weight: 700; margin-bottom: 1rem; }
+  .plan-specs {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    padding-top: 1rem; border-top: 1px solid var(--border);
+    font-size: 0.75rem; color: var(--muted); font-weight: 600;
+  }
+  .spec { display: flex; align-items: center; gap: 0.35rem; }
+
+  /* ========= GALLERY ========= */
+  .gallery { padding: 7rem 6rem; background: var(--linen); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 240px 240px;
+    gap: 8px;
+    margin-top: 3.5rem;
+  }
+
+  .gallery-item {
+    overflow: hidden; border-radius: 12px; cursor: pointer;
+    position: relative;
+  }
+  .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 2; }
+
+  .gallery-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover .gallery-img { transform: scale(1.07); }
+
+  .gallery-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(61,46,30,0.3), transparent 50%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  .gallery-label {
+    position: absolute; bottom: 1rem; left: 1rem; z-index: 2;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #fff; font-weight: 700; opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover .gallery-label { opacity: 1; }
+
+  /* ========= AMENITIES ========= */
+  .amenities { padding: 7rem 6rem; }
+
+  .amenities-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+
+  .amenities-visual { position: relative; }
+
+  .amenities-img-main {
+    width: 100%; border-radius: 20px; object-fit: cover; height: 500px;
+    box-shadow: 0 20px 60px rgba(61,46,30,0.15);
+  }
+
+  .amenities-img-inset {
+    position: absolute; bottom: -2rem; right: -2rem;
+    width: 180px; height: 180px; border-radius: 16px; object-fit: cover;
+    border: 5px solid var(--sand);
+    box-shadow: 0 10px 30px rgba(61,46,30,0.2);
+  }
+
+  .amenities-badge {
+    position: absolute; top: 2rem; left: -1.5rem;
+    background: var(--clay); color: #fff;
+    padding: 1rem 1.4rem; border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(196,149,106,0.4);
+    text-align: center;
+  }
+  .amenities-badge-num { font-family: 'Lora', serif; font-size: 2rem; font-weight: 500; line-height: 1; }
+  .amenities-badge-text { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-top: 0.2rem; }
+
+  .amenities-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2.5rem;
+  }
+
+  .amenity-item {
+    background: #fff; border-radius: 14px; padding: 1.4rem;
+    border: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 1rem;
+    transition: box-shadow 0.3s, transform 0.3s;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .amenity-item:hover { box-shadow: 0 8px 24px rgba(61,46,30,0.1); transform: translateY(-2px); }
+
+  .amenity-icon {
+    font-size: 1.5rem; flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: var(--linen); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .amenity-name { font-size: 0.85rem; font-weight: 700; color: var(--bark); margin-bottom: 0.2rem; }
+  .amenity-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+
+  /* ========= TESTIMONIALS ========= */
+  .testimonials { padding: 7rem 6rem; background: var(--bark); }
+
+  .testimonials .section-eyebrow { color: var(--clay-light); }
+  .testimonials .section-title { color: #fff; }
+  .testimonials .section-link { color: rgba(255,255,255,0.4); }
+  .testimonials .section-link:hover { color: var(--clay-light); }
+
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+
+  .testi-card {
+    background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.3s;
+  }
+  .testi-card:hover { background: rgba(255,255,255,0.09); }
+
+  .testi-stars { color: var(--clay-light); font-size: 0.9rem; margin-bottom: 1.2rem; letter-spacing: 0.1em; }
+
+  .testi-quote {
+    font-family: 'Lora', serif;
+    font-size: 1rem; font-weight: 400; font-style: italic;
+    line-height: 1.75; color: rgba(250,246,240,0.85); margin-bottom: 1.5rem;
+  }
+
+  .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--clay);
+  }
+  .testi-name { font-size: 0.82rem; font-weight: 700; color: #fff; }
+  .testi-unit { font-size: 0.7rem; color: rgba(250,246,240,0.45); margin-top: 0.1rem; letter-spacing: 0.06em; }
+
+  /* ========= LOCATION ========= */
+  .location { padding: 7rem 6rem; background: var(--linen); }
+
+  .location-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+
+  .location-map-wrap {
+    border-radius: 20px; overflow: hidden; height: 420px;
+    box-shadow: 0 16px 48px var(--shadow);
+    background: var(--warm);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .map-placeholder {
+    text-align: center; color: var(--muted);
+  }
+  .map-placeholder .map-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .map-placeholder p { font-size: 0.85rem; }
+
+  .location-address {
+    font-family: 'Lora', serif;
+    font-size: 1.6rem; font-weight: 500; color: var(--bark);
+    margin: 1.5rem 0 0.5rem; line-height: 1.35;
+  }
+  .location-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.7; }
+
+  .nearby-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 2rem; }
+
+  .nearby-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.9rem 1.2rem; background: #fff;
+    border-radius: 10px; border: 1px solid var(--border);
+    font-size: 0.82rem;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .nearby-icon { font-size: 1.2rem; }
+  .nearby-name { font-weight: 700; color: var(--bark); flex: 1; }
+  .nearby-dist { color: var(--clay); font-weight: 700; font-size: 0.78rem; }
+
+  /* ========= CONTACT ========= */
+  .contact { padding: 7rem 6rem; }
+
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+  .contact-desc { font-size: 0.95rem; line-height: 1.85; color: var(--muted); margin: 1.5rem 0 2.5rem; max-width: 380px; }
+
+  .contact-details { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: 0.88rem; color: var(--bark);
+  }
+  .contact-item-icon {
+    width: 42px; height: 42px; background: var(--linen); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+    border: 1px solid var(--border);
+  }
+  .contact-item-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 0.1rem; }
+  .contact-item-val { font-weight: 600; }
+
+  .contact-form {
+    background: #fff; border-radius: 20px; padding: 2.5rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px var(--shadow);
+  }
+
+  .form-title { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+
+  .form-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+
+  .form-input, .form-select, .form-textarea {
+    padding: 0.9rem 1.1rem;
+    border: 1.5px solid var(--border); border-radius: 10px;
+    font-family: 'Nunito', sans-serif; font-size: 0.9rem;
+    background: var(--sand); color: var(--bark); outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--clay); }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-select { appearance: none; cursor: pointer; }
+
+  .form-submit {
+    width: 100%; padding: 1rem;
+    background: var(--clay); color: #fff;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    border: none; cursor: pointer; border-radius: 50px;
+    font-family: 'Nunito', sans-serif; font-weight: 700;
+    transition: all 0.3s; margin-top: 0.5rem;
+    box-shadow: 0 6px 20px rgba(196,149,106,0.4);
+  }
+  .form-submit:hover { background: var(--bark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(61,46,30,0.3); }
+
+  /* ========= FOOTER ========= */
+  footer {
+    background: var(--bark-soft); padding: 4.5rem 6rem 2rem;
+    color: rgba(250,246,240,0.55);
+  }
+
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3.5rem; margin-bottom: 3.5rem; }
+
+  .footer-brand-logo {
+    font-family: 'Lora', serif;
+    font-size: 1.6rem; font-weight: 600;
+    color: #fff; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .footer-brand-logo .logo-accent { color: var(--clay-light); }
+
+  .footer-desc { font-size: 0.85rem; line-height: 1.85; margin-bottom: 2rem; max-width: 280px; }
+
+  .footer-social { display: flex; gap: 0.75rem; }
+  .social-link {
+    width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(250,246,240,0.5); text-decoration: none; font-size: 0.78rem; font-weight: 700;
+    transition: all 0.3s;
+  }
+  .social-link:hover { border-color: var(--clay-light); color: var(--clay-light); }
+
+  .footer-col h4 {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #fff; margin-bottom: 1.4rem; font-weight: 700;
+  }
+
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { text-decoration: none; font-size: 0.85rem; color: rgba(250,246,240,0.5); transition: color 0.3s; }
+  .footer-links a:hover { color: var(--clay-light); }
+
+  .footer-bottom {
+    padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.75rem;
+  }
+
+  /* ========= ANIMATIONS ========= */
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeUp   { from { opacity: 0; transform: translateY(30px);  } to { opacity: 1; transform: none; } }
+  @keyframes fadeIn   { from { opacity: 0; }                               to { opacity: 1; } }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 1024px) {
+    nav { padding: 1.1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { height: 55vw; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .filter-section { padding: 2rem 1.5rem; }
+    .filter-bar { grid-template-columns: 1fr; }
+    .filter-field { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .floorplans, .gallery, .amenities, .testimonials, .location, .contact { padding: 4rem 1.5rem; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
+    .gallery-item:nth-child(4) { grid-column: span 1; }
+    .amenities-inner, .location-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    footer { padding: 3rem 1.5rem 1.5rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== ĐIỀU HƯỚNG ===== -->
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="logo-leaf">🌿</span> Aloha <span class="logo-accent">House</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#floorplans">Căn Hộ</a></li>
+    <li><a href="#gallery">Địa Điểm Nổi Bật</a></li>
+    <li><a href="#amenities">Tiện Ích</a></li>
+    <li><a href="#testimonials">Đánh Giá</a></li>
+    <li><a href="#location">Vị Trí</a></li>
+    <li><a href="#contact">Liên Hệ</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Đặt Lịch Tham Quan</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Nơi Cộng Đồng Trở Thành Gia Đình</div>
+    <h1 class="hero-title">
+      Chào Mừng<br>
+      Về <em>Nhà</em> Tại<br>
+      Aloha House
+    </h1>
+    <p class="hero-desc">
+      Một cộng đồng ấm áp, thân thiện nơi hàng xóm trở thành bạn bè. 
+      Tiện nghi hiện đại, không gian xanh mát và cảm giác thuộc về thật sự — 
+      đây là cuộc sống căn hộ đúng nghĩa.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contact">Đặt Lịch Tham Quan</a>
+      <a class="btn-ghost" href="#floorplans">Xem Mặt Bằng</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">48</div>
+        <div class="stat-label">Căn Hộ</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Đánh Giá Cư Dân</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Tỷ Lệ Gia Hạn</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- THAY THẾ src NÀY BẰNG ẢNH ALOHA HOUSE CỦA BẠN -->
+    <img class="hero-img" src="https://i.imgur.com/x5VMsM4.jpeg" alt="Ngoại Thất Aloha House">
+    <div class="hero-badge">
+      <div class="hero-badge-tag">Đang Cho Thuê</div>
+      <div class="hero-badge-name">Aloha House</div>
+      <div class="hero-badge-sub">Bắt đầu từ 1.450 USD / tháng</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BỘ LỌC NHANH ===== -->
+<section class="filter-section">
+  <div class="filter-bar">
+    <div class="filter-field">
+      <span class="field-label">Loại Căn Hộ</span>
+      <select class="field-select">
+        <option>Tất Cả Loại</option>
+        <option>Studio</option>
+        <option>1 Phòng Ngủ</option>
+        <option>2 Phòng Ngủ</option>
+        <option>3 Phòng Ngủ</option>
+      </select>
+    </div>
+    <div class="filter-field">
+      <span class="field-label">Ngày Dọn Vào</span>
+      <select class="field-select">
+        <option>Bất Kỳ Ngày Nào</option>
+        <option>Ngay Lập Tức</option>
+        <option>Trong 30 Ngày</option>
+        <option>Trong 60 Ngày</option>
+        <option>Từ 3 Tháng Trở Lên</option>
+      </select>
+    </div>
+    <div class="filter-field">
+      <span class="field-label">Ngân Sách Hàng Tháng</span>
+      <select class="field-select">
+        <option>Mọi Mức Giá</option>
+        <option>Dưới 1.500 USD</option>
+        <option>1.500 – 2.000 USD</option>
+        <option>2.000 – 2.800 USD</option>
+        <option>2.800 USD trở lên</option>
+      </select>
+    </div>
+    <button class="filter-btn">Tìm Căn Hộ</button>
+  </div>
+</section>
+
+<!-- ===== MẶT BẰNG ===== -->
+<section class="floorplans" id="floorplans">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Thiết Kế Chu Đáo</div>
+      <h2 class="section-title">Căn Hộ</h2>
+    </div>
+    <a class="section-link" href="#contact">Kiểm Tra Phòng Trống</a>
+  </div>
+
+  <div class="plans-grid">
+    <div class="plan-card">
+      <div class="plan-img-wrap">
+        <!-- THAY THẾ: Ảnh nội thất căn studio -->
+        <img class="plan-img" src="https://i.imgur.com/bFzSt5d.jpeg" alt="Studio">
+        <span class="plan-tag">Còn Phòng</span>
+      </div>
+      <div class="plan-body">
+        <div class="plan-type">Studio</div>
+        <div class="plan-price">Từ 1.450 USD / tháng</div>
+        <div class="plan-specs">
+          <span class="spec">🛏 Studio</span>
+          <span class="spec">🚿 1 Phòng Tắm</span>
+          <span class="spec">◻ 45 – 48 m²</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-img-wrap">
+        <!-- THAY THẾ: Ảnh nội thất căn 1 phòng ngủ -->
+        <img class="plan-img" src="https://i.imgur.com/M20O9Ck.jpeg" alt="Studio Plus">
+        <span class="plan-tag limited">Còn Ít</span>
+      </div>
+      <div class="plan-body">
+        <div class="plan-type">Studio Plus</div>
+        <div class="plan-price">Từ 1.850 USD / tháng</div>
+        <div class="plan-specs">
+          <span class="spec">🛏 1 Phòng Ngủ</span>
+          <span class="spec">🚿 1 Phòng Tắm</span>
+          <span class="spec">◻ 63 – 71 m²</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-img-wrap">
+        <!-- THAY THẾ: Ảnh nội thất căn 2 phòng ngủ -->
+        <img class="plan-img" src="https://i.imgur.com/LYX0nXM.jpeg" alt="Phòng VIP">
+        <span class="plan-tag waitlist">Danh Sách Chờ</span>
+      </div>
+      <div class="plan-body">
+        <div class="plan-type">Phòng VIP</div>
+        <div class="plan-price">Từ 2.450 USD / tháng</div>
+        <div class="plan-specs">
+          <span class="spec">🛏 2 Phòng Ngủ</span>
+          <span class="spec">🚿 2 Phòng Tắm</span>
+          <span class="spec">◻ 91 – 102 m²</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THƯ VIỆN ẢNH ===== -->
+<section class="gallery" id="gallery">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Địa Điểm Nổi Bật</h2>
+    </div>
+    <a class="section-link" href="#contact">Đặt Lịch Tham Quan</a>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <!-- THAY THẾ: Ảnh lớn nổi bật (Công Viên / ngoại thất) -->
+      <img class="gallery-img" src="https://i.imgur.com/us9Ma1r.jpeg" alt="Công Viên">
+      <div class="gallery-label">Công Viên</div>
+    </div>
+    <div class="gallery-item">
+      <!-- THAY THẾ: Ảnh bếp hoặc phòng khách -->
+      <img class="gallery-img" src="https://i.imgur.com/VODR9TY.jpeg" alt="Viettel Tower">
+      <div class="gallery-label">Viettel Tower</div>
+    </div>
+    <div class="gallery-item">
+      <!-- THAY THẾ: Ảnh hồ bơi hoặc khu ngoài trời -->
+      <img class="gallery-img" src="https://i.imgur.com/Nn3n1Fr.jpeg" alt="Quán Bar">
+      <div class="gallery-label">Quán Bar</div>
+    </div>
+    <div class="gallery-item">
+      <!-- THAY THẾ: Ảnh phòng ngủ hoặc phòng tắm -->
+      <img class="gallery-img" src="https://i.imgur.com/1I1lsFC.jpeg" alt="Vạn Hạnh Mall">
+      <div class="gallery-label">Vạn Hạnh Mall</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIỆN ÍCH ===== -->
+<section class="amenities" id="amenities">
+  <div class="amenities-inner">
+    <div class="amenities-visual">
+      <!-- THAY THẾ: Ảnh tiện ích nổi bật (hồ bơi, phòng gym, sân...) -->
+      <img class="amenities-img-main" src="GALLERY_PHOTO_9.jpg" alt="Tiện Ích">
+      <!-- THAY THẾ: Ảnh nhỏ thứ hai -->
+      <img class="amenities-img-inset" src="GALLERY_PHOTO_10.jpg" alt="Chi Tiết Tiện Ích">
+      <div class="amenities-badge">
+        <div class="amenities-badge-num">15+</div>
+        <div class="amenities-badge-text">Tiện Ích</div>
+      </div>
+    </div>
+
+    <div class="amenities-content">
+      <div class="section-eyebrow">Tạo Ra Cho Sự Thoải Mái</div>
+      <h2 class="section-title">Tất Cả Những Gì<br>Bạn Cần Để Sống Tốt</h2>
+      <p style="font-size:0.95rem; line-height:1.85; color:var(--muted); margin-top:1rem; max-width:400px;">
+        Từ những buổi bơi sáng đến những buổi tối sum vầy, mọi góc của Aloha House 
+        đều được thiết kế để biến cuộc sống hàng ngày thành một kỳ nghỉ.
+      </p>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <div class="amenity-icon">🏊</div>
+          <div>
+            <div class="amenity-name">Hồ Bơi Resort</div>
+            <div class="amenity-desc">Hồ bơi có sưởi với khu nghỉ ngơi mở quanh năm</div>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🌿</div>
+          <div>
+            <div class="amenity-name">Vườn Cộng Đồng</div>
+            <div class="amenity-desc">Luống trồng rau cho cư dân tự canh tác</div>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🏋️</div>
+          <div>
+            <div class="amenity-name">Phòng Tập Gym</div>
+            <div class="amenity-desc">Phòng gym hiện đại với cardio, tạ & yoga</div>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🐾</div>
+          <div>
+            <div class="amenity-name">Thân Thiện Thú Cưng</div>
+            <div class="amenity-desc">Trạm tắm chó & khu vui chơi có hàng rào</div>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🛋️</div>
+          <div>
+            <div class="amenity-name">Phòng Sinh Hoạt Chung</div>
+            <div class="amenity-desc">Khu vực chung ấm cúng với lò sưởi & trò chơi</div>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">📦</div>
+          <div>
+            <div class="amenity-name">Tủ Nhận Hàng</div>
+            <div class="amenity-desc">Nhận bưu kiện an toàn 24/7</div>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🚲</div>
+          <div>
+            <div class="amenity-name">Kho Xe Đạp</div>
+            <div class="amenity-desc">Phòng xe đạp có khóa với trạm sửa chữa</div>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">☀️</div>
+          <div>
+            <div class="amenity-name">Sân Thượng</div>
+            <div class="amenity-desc">Bếp nướng BBQ, đèn dây & view thành phố</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ĐÁNH GIÁ CƯ DÂN ===== -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Câu Chuyện Cư Dân</div>
+      <h2 class="section-title">Lắng Nghe Cộng Đồng Của Chúng Tôi</h2>
+    </div>
+    <a class="section-link" href="#contact">Tham Gia Ngay</a>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">
+        "Chuyển đến Aloha House là quyết định tốt nhất tôi từng đưa ra. Các sự kiện cộng đồng, 
+        hàng xóm thân thiện, đội ngũ quản lý — thật sự cảm giác như ở nhà. Tôi đã gia hạn hai lần rồi."
+      </p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Cư Dân">
+        <div>
+          <div class="testi-name">Maya T.</div>
+          <div class="testi-unit">Căn 2B · Cư dân 3 năm</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">
+        "Tôi từng lo ngại về cuộc sống căn hộ nhưng Aloha House đã thay đổi hoàn toàn suy nghĩ của tôi. 
+        Ban quản lý phản hồi rất nhanh và khu vườn cộng đồng là nơi yêu thích của tôi mỗi cuối tuần."
+      </p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Cư Dân">
+        <div>
+          <div class="testi-name">Daniel R.</div>
+          <div class="testi-unit">Căn 4A · Cư dân 2 năm</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">
+        "Cún của tôi và tôi mê nơi này lắm. Công viên chó, những gương mặt thân thiện, 
+        hồ bơi vào những ngày nóng — Aloha House thật sự đã nghĩ đến mọi thứ. Chúng tôi không bao giờ rời đi!"
+      </p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Cư Dân">
+        <div>
+          <div class="testi-name">Sofia K.</div>
+          <div class="testi-unit">Căn 1C · Cư dân 1 năm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VỊ TRÍ ===== -->
+<section class="location" id="location">
+  <div class="location-inner">
+    <div class="location-map-wrap">
+      <!-- Bạn có thể nhúng Google Maps iframe thực vào đây -->
+      <div class="map-placeholder">
+        <div class="map-icon">📍</div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632.1879889844068!2d106.67848357038169!3d10.777731109756033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f79d29e5271%3A0xbd91a4fc96575c0!2sAloha%20House!5e1!3m2!1sen!2sus!4v1776848906505!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p style="font-size:0.75rem; margin-top:0.4rem; opacity:0.6;">hoặc ảnh khu phố</p>
+      </div>
+    </div>
+
+    <div class="location-details">
+      <div class="section-eyebrow">Tìm Chúng Tôi</div>
+      <div class="location-address">
+        42 Hẻm 283 Cách Mạng Tháng Tám<br>
+        Hồ Chí Minh 72500
+      </div>
+      <p class="location-sub">
+        Tọa lạc trong một khu phố sôi động với tiện ích giao thông, công viên, 
+        quán cà phê và tất cả mọi thứ làm cho cuộc sống hàng ngày thêm dễ chịu.
+      </p>
+
+      <div class="nearby-list">
+        <div class="nearby-item">
+          <span class="nearby-icon">🚇</span>
+          <span class="nearby-name">Trạm Xe Buýt / Tàu Điện</span>
+          <span class="nearby-dist">3 phút đi bộ</span>
+        </div>
+        <div class="nearby-item">
+          <span class="nearby-icon">🛒</span>
+          <span class="nearby-name">Siêu Thị</span>
+          <span class="nearby-dist">5 phút đi bộ</span>
+        </div>
+        <div class="nearby-item">
+          <span class="nearby-icon">🌳</span>
+          <span class="nearby-name">Công Viên Thành Phố</span>
+          <span class="nearby-dist">8 phút đi bộ</span>
+        </div>
+        <div class="nearby-item">
+          <span class="nearby-icon">☕</span>
+          <span class="nearby-name">Quán Cà Phê & Nhà Hàng</span>
+          <span class="nearby-dist">2 phút đi bộ</span>
+        </div>
+        <div class="nearby-item">
+          <span class="nearby-icon">🏥</span>
+          <span class="nearby-name">Trung Tâm Y Tế</span>
+          <span class="nearby-dist">10 phút lái xe</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIÊN HỆ / ĐẶT LỊCH ===== -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-eyebrow">Liên Hệ Với Chúng Tôi</div>
+      <h2 class="section-title">Đặt Lịch Tham Quan<br>Ngay Hôm Nay</h2>
+      <p class="contact-desc">
+        Chúng tôi rất muốn dẫn bạn tham quan. Nhắn tin, gọi điện, 
+        hoặc ghé thăm trong giờ làm việc — chúng tôi luôn vui lòng nói aloha! 🌺
+      </p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Địa Chỉ</div>
+            <div class="contact-item-val">42 Hẻm 283 Cách Mạng Tháng Tám, Phường 12, Hòa Hưng, Hồ Chí Minh 72500, Vietnam</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Điện Thoại</div>
+            <div class="contact-item-val">(555) 000-0000</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val">hello@alohahouseapts.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <div class="contact-item-label">Giờ Làm Việc</div>
+            <div class="contact-item-val">T2–T6: 9h–18h · T7: 10h–16h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-title">Đặt Lịch Tham Quan 🌺</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Họ</label>
+          <input class="form-input" type="text" placeholder="Nguyễn">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tên</label>
+          <input class="form-input" type="text" placeholder="An">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Địa Chỉ Email</label>
+        <input class="form-input" type="email" placeholder="an@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Số Điện Thoại</label>
+        <input class="form-input" type="tel" placeholder="0909 000 000">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Loại Căn Hộ</label>
+          <select class="form-select">
+            <option>Studio</option>
+            <option>1 Phòng Ngủ</option>
+            <option>2 Phòng Ngủ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ngày Dọn Vào</label>
+          <input class="form-input" type="date">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tin Nhắn (Tùy Chọn)</label>
+        <textarea class="form-textarea" placeholder="Câu hỏi hoặc yêu cầu đặc biệt của bạn..."></textarea>
+      </div>
+      <button class="form-submit">Gửi Yêu Cầu Tham Quan 🌺</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">🌿 Aloha <span class="logo-accent">House</span></div>
+      <p class="footer-desc">
+        Một cộng đồng ấm áp, thân thiện nơi mỗi cư dân đều cảm thấy như ở nhà. 
+        Được quản lý chu đáo và yêu thương từ ngày đầu tiên.
+      </p>
+      <div class="footer-social">
+        <a class="social-link" href="#">ig</a>
+        <a class="social-link" href="#">fb</a>
+        <a class="social-link" href="#">tw</a>
+        <a class="social-link" href="#">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Khám Phá</h4>
+      <ul class="footer-links">
+        <li><a href="#floorplans">Mặt Bằng</a></li>
+        <li><a href="#gallery">Thư Viện Ảnh</a></li>
+        <li><a href="#amenities">Tiện Ích</a></li>
+        <li><a href="#testimonials">Đánh Giá</a></li>
+        <li><a href="#location">Khu Phố</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Cư Dân</h4>
+      <ul class="footer-links">
+        <li><a href="#">Cổng Thông Tin Cư Dân</a></li>
+        <li><a href="#">Thanh Toán Tiền Thuê</a></li>
+        <li><a href="#">Yêu Cầu Sửa Chữa</a></li>
+        <li><a href="#">Sự Kiện Cộng Đồng</a></li>
+        <li><a href="#">Giới Thiệu Bạn Bè</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Liên Hệ</h4>
+      <ul class="footer-links">
+        <li><a href="#">42 Hẻm 283 Cách Mạng Tháng Tám</a></li>
+        <li><a href="#">Hồ Chí Minh 72500</a></li>
+        <li><a href="#">(555) 000-0000</a></li>
+        <li><a href="#">hello@alohahouseapts.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Aloha House Apartments. Bảo lưu mọi quyền.</span>
+    <span>Chính Sách Bảo Mật · Điều Khoản · Nhà Ở Bình Đẳng 🏠</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.plan-card, .amenity-item, .testi-card, .nearby-item, .gallery-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(22px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    observer.observe(el);
+  });
+
+  // Nav active link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--clay)' : '';
+    });
+  });
+
+  // Form submission feedback
+  document.querySelector('.form-submit').addEventListener('click', function() {
+    this.textContent = '✓ Đã Gửi Yêu Cầu Tham Quan!';
+    this.style.background = 'var(--leaf)';
+    setTimeout(() => {
+      this.textContent = 'Gửi Yêu Cầu Tham Quan 🌺';
+      this.style.background = '';
+    }, 3000);
+  });
+</script>
+</body>
+</html>
