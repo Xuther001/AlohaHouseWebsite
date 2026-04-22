@@ -314,6 +314,45 @@
   }
   .gallery-item:hover .gallery-label { opacity: 1; }
 
+  /* ========= GALLERY ========= */
+  .scroll-gallery {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 2rem 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+  .scroll-item {
+    flex: 0 0 auto;
+    width: 320px;
+    height: 220px;
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    box-shadow: 0 8px 24px rgba(61,46,30,0.15);
+  }
+
+  .scroll-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .scroll-item .gallery-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
   /* ========= AMENITIES ========= */
   .amenities { padding: 7rem 6rem; }
 
@@ -732,7 +771,7 @@
   </div>
 </section>
 
-<!-- ===== THƯ VIỆN ẢNH ===== -->
+<!-- ===== Địa Điểm Nổi Bật ===== -->
 <section class="gallery" id="gallery">
   <div class="section-header">
     <div>
@@ -762,6 +801,178 @@
       <img class="gallery-img" src="https://i.imgur.com/1I1lsFC.jpeg" alt="Vạn Hạnh Mall">
       <div class="gallery-label">Vạn Hạnh Mall</div>
     </div>
+  </div>
+</section>
+
+<!-- ===== HÌNH ẢNH SCROLL GALLERY ===== -->
+<section class="gallery" id="hinh-anh">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Hình Ảnh</h2>
+    </div>
+    <a class="section-link" href="#contact">Đặt Lịch Tham Quan</a>
+  </div>
+
+  <div class="scroll-gallery">
+    
+    <!-- COPY THIS BLOCK 40 TIMES -->
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/uH9W6rO.jpeg" alt="Hình 1">
+      <div class="gallery-label">Hình 1</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/d85EXAJ.jpeg" alt="Hình 2">
+      <div class="gallery-label">Hình 2</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/V8xSOjZ.jpeg" alt="Hình 3">
+      <div class="gallery-label">Hình 3</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/i12vDOk.jpeg" alt="Hình 4">
+      <div class="gallery-label">Hình 4</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/A6HHROz.jpeg" alt="Hình 5">
+      <div class="gallery-label">Hình 5</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/7uFhKK3.jpeg" alt="Hình 6">
+      <div class="gallery-label">Hình 6</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/OipkAHb.jpeg" alt="Hình 7">
+      <div class="gallery-label">Hình 7</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/wwrPTBX.jpeg" alt="Hình 8">
+      <div class="gallery-label">Hình 8</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/QFWocwc.jpeg" alt="Hình 9">
+      <div class="gallery-label">Hình 9</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/is2xxH5.jpeg" alt="Hình 10">
+      <div class="gallery-label">Hình 10</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/jD19jFM.jpeg" alt="Hình 11">
+      <div class="gallery-label">Hình 11</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/kUPqcaN.jpeg" alt="Hình 12">
+      <div class="gallery-label">Hình 12</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/rzuZdPJ.jpeg" alt="Hình 13">
+      <div class="gallery-label">Hình 13</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/GF1ofEJ.jpeg" alt="Hình 14">
+      <div class="gallery-label">Hình 14</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/WxqJ2lh.jpeg" alt="Hình 15">
+      <div class="gallery-label">Hình 15</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/kCbro8r.jpeg" alt="Hình 16">
+      <div class="gallery-label">Hình 16</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/A3PNmZJ.jpeg" alt="Hình 17">
+      <div class="gallery-label">Hình 17</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/MnmofYq.jpeg" alt="Hình 18">
+      <div class="gallery-label">Hình 18</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/3wTgtcT.jpeg" alt="Hình 19">
+      <div class="gallery-label">Hình 19</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/6nNaZqN.jpeg" alt="Hình 20">
+      <div class="gallery-label">Hình 20</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/NrECU5z.jpeg" alt="Hình 21">
+      <div class="gallery-label">Hình 21</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/W6JIQMN.jpeg" alt="Hình 22">
+      <div class="gallery-label">Hình 22</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/VGB1j6U.jpeg" alt="Hình 23">
+      <div class="gallery-label">Hình 23</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/dgu3AVS.jpeg" alt="Hình 24">
+      <div class="gallery-label">Hình 24</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/ohgVbMd.jpeg" alt="Hình 25">
+      <div class="gallery-label">Hình 25</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/JG1ZekP.jpeg" alt="Hình 26">
+      <div class="gallery-label">Hình 26</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/2rRZ4um.jpeg" alt="Hình 27">
+      <div class="gallery-label">Hình 27</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/Sa4wApL.jpeg" alt="Hình 28">
+      <div class="gallery-label">Hình 28</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/d5uUbAs.jpeg" alt="Hình 29">
+      <div class="gallery-label">Hình 29</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/ItKWaDJ.jpeg" alt="Hình 30">
+      <div class="gallery-label">Hình 30</div>
+    </div>
+
+    <div class="scroll-item">
+      <img src="https://i.imgur.com/iv8DNjR.jpeg" alt="Hình 31">
+      <div class="gallery-label">Hình 31</div>
+    </div>
+
+    <!-- ... repeat up to 40 images ... -->
+
   </div>
 </section>
 
