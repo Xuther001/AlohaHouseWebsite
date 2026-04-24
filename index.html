@@ -681,15 +681,8 @@
     background: #fff; border-radius: 20px; padding: 2.5rem;
     border: 1px solid var(--border);
     box-shadow: 0 8px 32px var(--shadow);
+    min-width: 0; width: 100%;
   }
-
-  .form-title { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-
-  .form-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 
   .form-input, .form-select, .form-textarea {
     padding: 0.9rem 1.1rem;
@@ -697,6 +690,7 @@
     font-family: 'Nunito', sans-serif; font-size: 0.9rem;
     background: var(--sand); color: var(--bark); outline: none;
     transition: border-color 0.2s;
+    width: 100%; box-sizing: border-box;
   }
   .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--clay); }
   .form-textarea { resize: vertical; min-height: 100px; }
@@ -781,6 +775,7 @@
     footer { padding: 3rem 1.5rem 1.5rem; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .form-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 1.5rem; }
   }
 </style>
 </head>
