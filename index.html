@@ -306,11 +306,10 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 0.85rem; color: var(--bark);
     box-shadow: 0 2px 8px rgba(61,46,30,0.18);
-    z-index: 10; opacity: 0; transition: opacity 0.2s, background 0.2s;
+    z-index: 10; opacity: 1; transition: opacity 0.2s, background 0.2s;
     padding: 0; line-height: 1;
   }
   .carousel-btn:hover { background: #fff; }
-  .plan-img-wrap:hover .carousel-btn { opacity: 1; }
   .carousel-btn.prev { left: 0.55rem; }
   .carousel-btn.next { right: 0.55rem; }
 
@@ -333,6 +332,101 @@
     padding: 0.2rem 0.55rem; border-radius: 20px; z-index: 10;
     pointer-events: none;
   }
+
+  /* ── Lightbox ── */
+  #lightbox {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(15, 10, 5, 0.96);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #lightbox.open { opacity: 1; pointer-events: all; }
+
+  .lb-header {
+    position: absolute; top: 0; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    z-index: 10;
+  }
+  .lb-title {
+    font-family: 'Lora', serif; font-size: 1rem; color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+  }
+  .lb-counter {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.1); padding: 0.25rem 0.7rem; border-radius: 20px;
+  }
+  .lb-close {
+    width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer;
+    background: rgba(255,255,255,0.12); color: #fff; font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .lb-close:hover { background: rgba(255,255,255,0.25); }
+
+  .lb-stage {
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .lb-track {
+    display: flex; height: 100%; width: 100%;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
+  }
+
+  .lb-slide {
+    flex: 0 0 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 5rem 5.5rem;
+  }
+  .lb-slide img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain; border-radius: 8px;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.6);
+    user-select: none; -webkit-user-drag: none;
+  }
+  /* placeholder in lightbox */
+  .lb-slide .plan-img-placeholder {
+    width: 480px; max-width: 80vw; height: 320px;
+    border-radius: 10px; opacity: 0.5;
+  }
+
+  .lb-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px; border-radius: 50%; border: none; cursor: pointer;
+    background: rgba(255,255,255,0.12); color: #fff;
+    font-size: 1.6rem; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10; transition: background 0.2s, transform 0.15s;
+    padding: 0;
+  }
+  .lb-btn:hover { background: rgba(255,255,255,0.28); transform: translateY(-50%) scale(1.08); }
+  .lb-btn.prev { left: 1.2rem; }
+  .lb-btn.next { right: 1.2rem; }
+
+  .lb-footer {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+    padding: 1.2rem 1rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+    z-index: 10;
+  }
+  .lb-dots { display: flex; gap: 7px; flex-wrap: wrap; justify-content: center; }
+  .lb-dot {
+    width: 8px; height: 8px; border-radius: 50%; border: none; cursor: pointer;
+    background: rgba(255,255,255,0.35); padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .lb-dot.active { background: #fff; transform: scale(1.35); }
+
+  /* cursor hint on card images */
+  .carousel-slide { cursor: zoom-in; }
 
   .plan-tag {
     position: absolute; top: 1rem; left: 1rem;
@@ -1818,6 +1912,23 @@
   </div>
 </footer>
 
+<!-- ── Lightbox ── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to">
+  <div class="lb-header">
+    <div class="lb-title" id="lb-title"></div>
+    <div class="lb-counter" id="lb-counter"></div>
+    <button class="lb-close" id="lb-close" aria-label="Đóng">✕</button>
+  </div>
+  <div class="lb-stage">
+    <div class="lb-track" id="lb-track"></div>
+    <button class="lb-btn prev" id="lb-prev" aria-label="Ảnh trước">&#8249;</button>
+    <button class="lb-btn next" id="lb-next" aria-label="Ảnh sau">&#8250;</button>
+  </div>
+  <div class="lb-footer">
+    <div class="lb-dots" id="lb-dots"></div>
+  </div>
+</div>
+
 <script>
   // Scroll-triggered fade-in
   const observer = new IntersectionObserver((entries) => {
@@ -1850,7 +1961,96 @@
     });
   });
 
-  // ── Carousel logic ──
+  // ── Carousel + Lightbox ──
+
+  // --- Lightbox state ---
+  const lb         = document.getElementById('lightbox');
+  const lbTrack    = document.getElementById('lb-track');
+  const lbDots     = document.getElementById('lb-dots');
+  const lbCounter  = document.getElementById('lb-counter');
+  const lbTitle    = document.getElementById('lb-title');
+  const lbClose    = document.getElementById('lb-close');
+  const lbPrev     = document.getElementById('lb-prev');
+  const lbNext     = document.getElementById('lb-next');
+  let lbSlides = [], lbCurrent = 0, lbTotal = 0;
+
+  function lbUpdateUI() {
+    lbTrack.style.transform = `translateX(-${lbCurrent * 100}%)`;
+    lbCounter.textContent = (lbCurrent + 1) + ' / ' + lbTotal;
+    lbDots.querySelectorAll('.lb-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === lbCurrent));
+  }
+
+  function lbGoTo(n) {
+    lbCurrent = (n + lbTotal) % lbTotal;
+    lbUpdateUI();
+  }
+
+  function openLightbox(slides, startIndex, roomTitle) {
+    // Build slides in lightbox track
+    lbTrack.innerHTML = '';
+    lbDots.innerHTML  = '';
+    lbTotal   = slides.length;
+    lbCurrent = startIndex;
+    lbTitle.textContent = roomTitle;
+
+    slides.forEach((slide, i) => {
+      // Clone the slide content into a lb-slide wrapper
+      const lbSlide = document.createElement('div');
+      lbSlide.className = 'lb-slide';
+
+      const img = slide.querySelector('img');
+      if (img) {
+        const clone = document.createElement('img');
+        clone.src = img.src; clone.alt = img.alt || roomTitle;
+        lbSlide.appendChild(clone);
+      } else {
+        // placeholder — clone the div
+        const ph = slide.querySelector('.plan-img-placeholder');
+        if (ph) lbSlide.appendChild(ph.cloneNode(true));
+      }
+      lbTrack.appendChild(lbSlide);
+
+      // dot
+      const dot = document.createElement('button');
+      dot.className = 'lb-dot';
+      dot.setAttribute('aria-label', 'Ảnh ' + (i + 1));
+      dot.addEventListener('click', () => lbGoTo(i));
+      lbDots.appendChild(dot);
+    });
+
+    lbUpdateUI();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if (e.target === lb || e.target === lbTrack) closeLightbox(); });
+  lbPrev.addEventListener('click', e => { e.stopPropagation(); lbGoTo(lbCurrent - 1); });
+  lbNext.addEventListener('click', e => { e.stopPropagation(); lbGoTo(lbCurrent + 1); });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')       closeLightbox();
+    if (e.key === 'ArrowLeft')    lbGoTo(lbCurrent - 1);
+    if (e.key === 'ArrowRight')   lbGoTo(lbCurrent + 1);
+  });
+
+  // Lightbox touch/swipe
+  let lbStartX = 0;
+  lb.addEventListener('touchstart', e => { lbStartX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - lbStartX;
+    if (Math.abs(dx) > 40) lbGoTo(lbCurrent + (dx < 0 ? 1 : -1));
+  });
+
+  // --- Card carousels ---
   document.querySelectorAll('[data-carousel]').forEach(carousel => {
     const track   = carousel.querySelector('.carousel-track');
     const slides  = carousel.querySelectorAll('.carousel-slide');
@@ -1860,6 +2060,10 @@
     const nextBtn = carousel.querySelector('.carousel-btn.next');
     let current = 0;
     const total = slides.length;
+
+    // Infer room title from the plan-type inside the same card
+    const card = carousel.closest('.plan-card');
+    const roomTitle = card ? (card.querySelector('.plan-type')?.textContent || '') : '';
 
     // Build dots
     slides.forEach((_, i) => {
@@ -1885,7 +2089,15 @@
     prevBtn.addEventListener('click', e => { e.stopPropagation(); goTo(current - 1); });
     nextBtn.addEventListener('click', e => { e.stopPropagation(); goTo(current + 1); });
 
-    // Touch / swipe support
+    // Click any slide → open lightbox at that index
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox(Array.from(slides), i, roomTitle);
+      });
+    });
+
+    // Touch / swipe on card carousel
     let startX = 0;
     carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
     carousel.addEventListener('touchend', e => {
