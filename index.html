@@ -451,6 +451,59 @@
   }
   .spec { display: flex; align-items: center; gap: 0.35rem; }
 
+  /* ========= NỘI THẤT & DỊCH VỤ ========= */
+  .noithat-dichvu { padding: 7rem 6rem; background: var(--sand); }
+
+  .ndv-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; margin-top: 3rem;
+  }
+
+  .ndv-card {
+    background: #fff; border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px var(--shadow);
+    overflow: hidden;
+  }
+
+  .ndv-card-header {
+    padding: 1.6rem 2rem 1.2rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.9rem;
+  }
+  .ndv-card-icon {
+    width: 44px; height: 44px; border-radius: 12px; background: var(--linen);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+  .ndv-card-title { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 500; color: var(--bark); }
+  .ndv-card-subtitle { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; letter-spacing: 0.04em; }
+  .ndv-card-body { padding: 1.6rem 2rem 2rem; }
+
+  .furniture-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .ftag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--linen); border: 1px solid var(--border);
+    border-radius: 50px; padding: 0.35rem 0.9rem;
+    font-size: 0.76rem; color: var(--bark-soft); font-weight: 600;
+  }
+  .ftag-icon { font-size: 0.95rem; }
+
+  .svc-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .svc-item {
+    display: flex; align-items: flex-start; gap: 0.85rem;
+    padding: 0.75rem 1rem; background: var(--sand);
+    border-radius: 12px; border: 1px solid var(--border);
+  }
+  .svc-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .svc-text { font-size: 0.82rem; color: var(--bark-soft); line-height: 1.55; }
+  .svc-text strong { color: var(--bark); font-weight: 700; display: block; margin-bottom: 0.1rem; }
+  .svc-highlight {
+    display: inline-block; margin-top: 0.25rem;
+    background: var(--leaf); color: #fff;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 20px;
+  }
+
   /* ========= GALLERY ========= */
   .gallery { padding: 7rem 6rem; background: var(--linen); }
 
@@ -765,7 +818,10 @@
     .filter-section { padding: 2rem 1.5rem; }
     .filter-bar { grid-template-columns: 1fr; }
     .filter-field { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .floorplans, .gallery, .amenities, .testimonials, .location, .contact { padding: 4rem 1.5rem; }
+    .floorplans, .gallery, .amenities, .testimonials, .location, .contact, .noithat-dichvu { padding: 4rem 1.5rem; }
+    .ndv-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .ndv-card-header { padding: 1.2rem 1.2rem 1rem; }
+    .ndv-card-body { padding: 1.2rem; }
     .plans-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
     .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
@@ -791,6 +847,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#floorplans">Căn Hộ</a></li>
+    <li><a href="#noithat-dichvu">Nội Thất & Dịch Vụ</a></li>
     <li><a href="#gallery">Địa Điểm Nổi Bật</a></li>
     <li><a href="#amenities">Tiện Ích</a></li>
     <li><a href="#testimonials">Đánh Giá</a></li>
@@ -1331,6 +1388,112 @@
         <div class="plan-extras">
           <strong>Thuê tháng:</strong> Cọc 1 tháng · Thanh toán 1 tháng<br>
           Phí quản lý: 300.000 đ/tháng · Nước 100k/người
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== NỘI THẤT & DỊCH VỤ ===== -->
+<section class="noithat-dichvu" id="noithat-dichvu">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Tiêu Chuẩn Phòng</div>
+      <h2 class="section-title">Nội Thất & Dịch Vụ</h2>
+    </div>
+  </div>
+
+  <div class="ndv-grid">
+
+    <!-- Nội thất -->
+    <div class="ndv-card">
+      <div class="ndv-card-header">
+        <div class="ndv-card-icon">🛋️</div>
+        <div>
+          <div class="ndv-card-title">Nội Thất Đầy Đủ</div>
+          <div class="ndv-card-subtitle">Trang bị sẵn — dọn vào ở ngay</div>
+        </div>
+      </div>
+      <div class="ndv-card-body">
+        <div class="furniture-tags">
+          <span class="ftag"><span class="ftag-icon">📺</span> Ti vi</span>
+          <span class="ftag"><span class="ftag-icon">❄️</span> Máy lạnh</span>
+          <span class="ftag"><span class="ftag-icon">🧊</span> Tủ lạnh</span>
+          <span class="ftag"><span class="ftag-icon">👕</span> Tủ quần áo</span>
+          <span class="ftag"><span class="ftag-icon">🚿</span> Máy nước nóng</span>
+          <span class="ftag"><span class="ftag-icon">🍽️</span> Bàn ăn</span>
+          <span class="ftag"><span class="ftag-icon">🔥</span> Bếp từ</span>
+          <span class="ftag"><span class="ftag-icon">📡</span> Lò vi sóng</span>
+          <span class="ftag"><span class="ftag-icon">💨</span> Máy hút mùi</span>
+          <span class="ftag"><span class="ftag-icon">🍚</span> Nồi cơm điện</span>
+          <span class="ftag"><span class="ftag-icon">☕</span> Ấm điện</span>
+          <span class="ftag"><span class="ftag-icon">💇</span> Máy sấy tóc</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dịch vụ & chính sách -->
+    <div class="ndv-card">
+      <div class="ndv-card-header">
+        <div class="ndv-card-icon">⚡</div>
+        <div>
+          <div class="ndv-card-title">Dịch Vụ & Chính Sách</div>
+          <div class="ndv-card-subtitle">Khách thuê tháng</div>
+        </div>
+      </div>
+      <div class="ndv-card-body">
+        <div class="svc-list">
+
+          <div class="svc-item">
+            <div class="svc-icon">⚡</div>
+            <div class="svc-text">
+              <strong>Chi phí hàng tháng</strong>
+              Điện 4.000đ/kWh · Nước 100.000đ/người · Phí quản lý 300.000đ/phòng
+            </div>
+          </div>
+
+          <div class="svc-item">
+            <div class="svc-icon">🛵</div>
+            <div class="svc-text">
+              <strong>Giữ xe máy</strong>
+              Miễn phí 1 chiếc · Chiếc thứ 2: 250.000đ/tháng
+              <span class="svc-highlight">Free chiếc đầu</span>
+            </div>
+          </div>
+
+          <div class="svc-item">
+            <div class="svc-icon">🧹</div>
+            <div class="svc-text">
+              <strong>Dọn phòng</strong>
+              Thay chăn drap 1 tuần/lần (khách tháng) · Dọn phòng mỗi ngày theo yêu cầu (khách ngày)
+            </div>
+          </div>
+
+          <div class="svc-item">
+            <div class="svc-icon">🏢</div>
+            <div class="svc-text">
+              <strong>Tiện ích toà nhà</strong>
+              Thang máy · Bảo vệ 24/7 · Hầm xe
+            </div>
+          </div>
+
+          <div class="svc-item">
+            <div class="svc-icon">👥</div>
+            <div class="svc-text">
+              <strong>Số người ở</strong>
+              Tối đa 2 người/phòng (trừ phòng Extra Bed: 3 người)
+            </div>
+          </div>
+
+          <div class="svc-item">
+            <div class="svc-icon">🔑</div>
+            <div class="svc-text">
+              <strong>Điều khoản thuê tháng</strong>
+              Cọc 1 tháng · Thanh toán 1 tháng · Giá ngày không phát sinh thêm chi phí
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
